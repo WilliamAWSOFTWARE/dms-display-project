@@ -2,7 +2,7 @@
   "id": "displayProject",
   "name": "Display Project (Win+P)",
   "description": "Windows-style quick display projector and multi-monitor layout switcher for Hyprland on DMS",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "WilliamAWSOFTWARE",
   "icon": "devices",
   "type": "daemon",
@@ -12,4 +12,3 @@
   "requires_dms": ">=2.0.0",
   "permissions": ["process", "settings_read", "settings_write"]
 }
-

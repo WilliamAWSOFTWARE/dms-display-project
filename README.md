@@ -3,18 +3,19 @@
 [![Hyprland](https://img.shields.io/badge/Hyprland-0.50%2B-blue?logo=wayland&logoColor=white)](https://hyprland.org)
 [![DankMaterialShell](https://img.shields.io/badge/DMS-Plugin-purple?logo=material-design&logoColor=white)](https://github.com/AvengeMedia/DankMaterialShell)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](plugin.json)
+[![Version](https://img.shields.io/badge/version-1.0.1-green.svg)](plugin.json)
 
-A native Material Design 3 display projection flyout for **Hyprland** on **DankMaterialShell (DMS)**, bringing the familiar Windows **Win + P** multi-monitor switching experience into Linux.
+A native Material Design 3 display projection modal for **Hyprland** on **DankMaterialShell (DMS)**, bringing the familiar Windows **Win + P** multi-monitor switching experience into Linux.
 
 ---
 
 ## 🎯 Features
 
 - **Windows Win+P Workflow**:
-  - **Press `SUPER + P`**: Opens the elegant right-anchored flyout sidebar.
+  - **Press `SUPER + P`**: Opens an elegant centered modal dialog with smooth scale and fade animations.
   - **Press `SUPER + P` again**: Cycles through the 4 projection modes smoothly.
-  - **Auto-Apply Countdown**: A visual progress bar counts down (~2s) and applies the selected mode automatically, or press **Enter** / click to apply immediately.
+  - **Apply**: Press **Enter**, **Space**, numbers **1-4**, or click any card directly.
+  - **No Accidental Changes**: No intrusive auto-apply timer; the selected mode only applies when explicitly confirmed.
   - **Cancel**: Press **Escape** or click anywhere outside to close without applying.
 - **4 Standard Modes**:
   1. 💻 **Solo pantalla de PC (PC Screen Only)**: Keeps your primary display active and turns off/sleeps secondary monitors.
@@ -64,14 +65,14 @@ bind = $mainMod, P, exec, dms ipc call displayProject cycle
 
 ### Selector Rápido de Pantallas (Estilo Win + P) para DMS
 
-Flyout nativo en Material Design 3 para **Hyprland** en **DankMaterialShell (DMS)**, recreando la experiencia clásica de conmutación de pantallas **Win + P** de Windows en Linux.
+Modal centrado nativo en Material Design 3 para **Hyprland** en **DankMaterialShell (DMS)**, recreando la experiencia clásica de conmutación de pantallas **Win + P** de Windows en Linux.
 
 #### Características
 - **Flujo idéntico a Win + P**:
-  - Pulsa **`SUPER + P`**: Se abre el menú lateral derecho.
+  - Pulsa **`SUPER + P`**: Se abre el diálogo centrado en pantalla.
   - Vuelve a pulsar **`SUPER + P`**: Va ciclando entre los 4 modos.
-  - **Barra de Cuenta Regresiva**: Barra de progreso animada de 2 segundos que auto-aplica la opción seleccionada. También puedes pulsar **Enter** o hacer clic directo.
-  - **Cancelar**: Pulsa **Escape** o haz clic fuera del panel.
+  - **Confirmación manual segura**: Sin temporizadores que cambien la pantalla de repente; se aplica al pulsar **Enter**, **Espacio**, números del **1 al 4** o haciendo clic directo sobre la tarjeta.
+  - **Cancelar**: Pulsa **Escape** o haz clic fuera del panel para cerrar sin modificar nada.
 - **Los 4 Modos**:
   1. 💻 **Solo pantalla de PC**: Monitor principal activo, monitor secundario suspendido vía DPMS.
   2. 🔁 **Duplicar**: Clona la pantalla en ambos monitores.

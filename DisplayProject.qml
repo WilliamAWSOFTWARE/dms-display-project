@@ -65,13 +65,11 @@ PluginComponent {
             }
         }
 
-        autoApplyTimer.stop();
         overlay.visible = true;
         Qt.callLater(() => overlayFocusScope.forceActiveFocus());
     }
 
     function closeFlyout() {
-        autoApplyTimer.stop();
         overlay.visible = false;
     }
 
@@ -88,7 +86,6 @@ PluginComponent {
         } else {
             selectedIndex = (selectedIndex + 1) % modes.length;
         }
-        restartAutoApply();
     }
 
     function applySelected() {
@@ -100,39 +97,10 @@ PluginComponent {
     function applyMode(modeId) {
         if (isApplying) return;
         isApplying = true;
-        autoApplyTimer.stop();
         applyBuffer = "";
         applyProcess.command = ["python3", root.scriptPath, "set", modeId];
         applyProcess.running = true;
         closeFlyout();
-    }
-
-    function restartAutoApply() {
-        const timeout = Number(loadPluginValue("autoApplyTimeout", 2200));
-        if (timeout > 0) {
-            autoApplyTimer.interval = timeout;
-            autoApplyTimer.restart();
-        } else {
-            autoApplyTimer.stop();
-        }
-    }
-
-    function loadPluginValue(key, fallback) {
-        if (root.pluginService && root.pluginService.loadPluginData) {
-            return root.pluginService.loadPluginData(root.pluginId, key, fallback);
-        }
-        return fallback;
-    }
-
-    Timer {
-        id: autoApplyTimer
-        interval: 2200
-        repeat: false
-        onTriggered: {
-            if (overlay.visible) {
-                root.applySelected();
-            }
-        }
     }
 
     property string queryBuffer: ""
@@ -254,14 +222,12 @@ PluginComponent {
                 case Qt.Key_Left:
                 case Qt.Key_Backtab:
                     root.selectedIndex = (root.selectedIndex - 1 + root.modes.length) % root.modes.length;
-                    root.restartAutoApply();
                     event.accepted = true;
                     break;
                 case Qt.Key_Down:
                 case Qt.Key_Right:
                 case Qt.Key_Tab:
                     root.selectedIndex = (root.selectedIndex + 1) % root.modes.length;
-                    root.restartAutoApply();
                     event.accepted = true;
                     break;
                 case Qt.Key_Return:
@@ -297,18 +263,21 @@ PluginComponent {
                 }
             }
 
-            // Flyout Sidebar Panel
+            // Centered Modal Dialog Panel
             Rectangle {
                 id: flyoutPanel
-                width: 380
+                width: 440
                 height: Math.min(parent.height - Theme.spacingXL * 2, contentColumn.implicitHeight + Theme.spacingL * 2)
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.spacingXL
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.centerIn: parent
                 radius: Theme.cornerRadius * 1.5
                 color: Theme.surfaceContainerHigh
                 border.color: Theme.withAlpha(Theme.outline, 0.25)
                 border.width: 1
+
+                scale: overlay.visible ? 1.0 : 0.95
+                opacity: overlay.visible ? 1.0 : 0.0
+                Behavior on scale { NumberAnimation { duration: Theme.shortDuration; easing.type: Easing.OutCubic } }
+                Behavior on opacity { NumberAnimation { duration: Theme.shortDuration } }
 
                 // Drop shadow simulation
                 Rectangle {
@@ -366,7 +335,7 @@ PluginComponent {
                             }
 
                             StyledText {
-                                text: "SUPER + P para ciclar · Enter para aplicar"
+                                text: "SUPER + P o Flechas para elegir · Enter para aplicar"
                                 font.pixelSize: Theme.fontSizeSmall - 1
                                 color: Theme.surfaceVariantText
                                 elide: Text.ElideRight
@@ -508,36 +477,6 @@ PluginComponent {
                                         root.selectedIndex = cardDelegate.index;
                                         root.applySelected();
                                     }
-                                }
-                            }
-                        }
-                    }
-
-                    // Auto-Apply Countdown Indicator
-                    Item {
-                        width: parent.width
-                        height: 4
-                        visible: autoApplyTimer.running
-
-                        Rectangle {
-                            anchors.fill: parent
-                            radius: 2
-                            color: Theme.withAlpha(Theme.primary, 0.2)
-
-                            Rectangle {
-                                id: countdownBar
-                                height: parent.height
-                                radius: 2
-                                color: Theme.primary
-                                width: 0
-
-                                NumberAnimation on width {
-                                    id: countdownAnim
-                                    running: autoApplyTimer.running
-                                    from: contentColumn.width
-                                    to: 0
-                                    duration: autoApplyTimer.interval
-                                    easing.type: Easing.Linear
                                 }
                             }
                         }
