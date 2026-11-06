@@ -7,6 +7,10 @@
 
 A native Material Design 3 display projection modal for **Hyprland** on **DankMaterialShell (DMS)**, bringing the familiar Windows **Win + P** multi-monitor switching experience into Linux.
 
+<p align="center">
+  <img src="assets/preview.png" alt="Display Project (Win+P) Preview" width="480">
+</p>
+
 ---
 
 ## 🎯 Features
