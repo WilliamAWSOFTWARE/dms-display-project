@@ -59,3 +59,4 @@ bind = $mainMod, P, exec, dms ipc call displayProject cycle
 ## 📄 License
 
 MIT © [WilliamAWSOFTWARE](https://github.com/WilliamAWSOFTWARE)
+

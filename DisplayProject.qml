@@ -24,7 +24,7 @@ PluginComponent {
         {
             id: "primary_only",
             title: "Solo pantalla de PC",
-            desc: displayState && displayState.primary ? `${displayState.primary.name} (${displayState.primary.model})` : "Monitor 1 principal",
+            desc: displayState && displayState.primary ? `${displayState.primary.name} · ${displayState.primary.native_width}x${displayState.primary.native_height} @${Math.round(displayState.primary.native_refresh)}Hz` : "Monitor 1 principal",
             icon: "laptop"
         },
         {
@@ -36,13 +36,13 @@ PluginComponent {
         {
             id: "extend",
             title: "Extender",
-            desc: "Ampliar escritorio entre pantallas",
+            desc: displayState && displayState.secondary ? `Escritorio ampliado (${displayState.secondary.native_width}x${displayState.secondary.native_height} @${Math.round(displayState.secondary.native_refresh)}Hz)` : "Ampliar escritorio entre pantallas",
             icon: "view_column"
         },
         {
             id: "secondary_only",
             title: "Solo segunda pantalla",
-            desc: displayState && displayState.secondary ? `${displayState.secondary.name} (${displayState.secondary.model})` : "Monitor 2 secundario",
+            desc: displayState && displayState.secondary ? `${displayState.secondary.name} · ${displayState.secondary.native_width}x${displayState.secondary.native_height} @${Math.round(displayState.secondary.native_refresh)}Hz` : "Monitor 2 secundario",
             icon: "tv"
         }
     ]
@@ -552,3 +552,4 @@ PluginComponent {
         console.info("DisplayProject: daemon loaded — use 'dms ipc call displayProject cycle' to open/cycle");
     }
 }
+

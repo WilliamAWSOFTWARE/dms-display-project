@@ -34,3 +34,4 @@ PluginSettings {
         leftIcon: "timer"
     }
 }
+
