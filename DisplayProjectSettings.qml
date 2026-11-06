@@ -17,7 +17,7 @@ PluginSettings {
 
     StyledText {
         width: parent.width
-        text: "Selector rápido de visualización multimonitor centrado al estilo Windows para Hyprland en DankMaterialShell."
+        text: "Windows-style centered quick multi-monitor projection switcher for Hyprland on DankMaterialShell."
         font.pixelSize: Theme.fontSizeSmall
         color: Theme.surfaceVariantText
         wrapMode: Text.WordWrap
@@ -25,7 +25,7 @@ PluginSettings {
 
     StyledText {
         width: parent.width
-        text: "• Atajo predeterminado: SUPER + P\n• Navegación: Flechas o pulsar SUPER + P para ciclar\n• Aplicar: Pulsa Enter, Espacio o haz clic en cualquier tarjeta\n• Cancelar: Pulsa Escape o haz clic fuera del panel"
+        text: "• Default shortcut: SUPER + P\n• Navigation: Arrow keys or press SUPER + P to cycle\n• Apply: Press Enter, Space or click any card\n• Cancel: Press Escape or click outside the panel"
         font.pixelSize: Theme.fontSizeSmall
         color: Theme.surfaceText
         wrapMode: Text.WordWrap

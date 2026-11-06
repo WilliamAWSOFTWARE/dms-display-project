@@ -23,26 +23,26 @@ PluginComponent {
     readonly property var modes: [
         {
             id: "primary_only",
-            title: "Solo pantalla de PC",
-            desc: displayState && displayState.primary ? `${displayState.primary.name} · ${displayState.primary.native_width}x${displayState.primary.native_height} @${Math.round(displayState.primary.native_refresh)}Hz` : "Monitor 1 principal",
+            title: "PC screen only",
+            desc: displayState && displayState.primary ? `${displayState.primary.name} · ${displayState.primary.native_width}x${displayState.primary.native_height} @${Math.round(displayState.primary.native_refresh)}Hz` : "Primary display only",
             icon: "laptop"
         },
         {
             id: "duplicate",
-            title: "Duplicar",
-            desc: "Clonar imagen en todas las pantallas",
+            title: "Duplicate",
+            desc: "Duplicate desktop on all displays",
             icon: "burst_mode"
         },
         {
             id: "extend",
-            title: "Extender",
-            desc: displayState && displayState.secondary ? `Escritorio ampliado (${displayState.secondary.native_width}x${displayState.secondary.native_height} @${Math.round(displayState.secondary.native_refresh)}Hz)` : "Ampliar escritorio entre pantallas",
+            title: "Extend",
+            desc: displayState && displayState.secondary ? `Extended desktop (${displayState.secondary.native_width}x${displayState.secondary.native_height} @${Math.round(displayState.secondary.native_refresh)}Hz)` : "Extend desktop across all displays",
             icon: "view_column"
         },
         {
             id: "secondary_only",
-            title: "Solo segunda pantalla",
-            desc: displayState && displayState.secondary ? `${displayState.secondary.name} · ${displayState.secondary.native_width}x${displayState.secondary.native_height} @${Math.round(displayState.secondary.native_refresh)}Hz` : "Monitor 2 secundario",
+            title: "Second screen only",
+            desc: displayState && displayState.secondary ? `${displayState.secondary.name} · ${displayState.secondary.native_width}x${displayState.secondary.native_height} @${Math.round(displayState.secondary.native_refresh)}Hz` : "Secondary display only",
             icon: "tv"
         }
     ]
@@ -328,14 +328,14 @@ PluginComponent {
                             spacing: 2
 
                             StyledText {
-                                text: "Proyectar pantallas"
+                                text: "Project"
                                 font.pixelSize: Theme.fontSizeLarge
                                 font.weight: Font.DemiBold
                                 color: Theme.surfaceText
                             }
 
                             StyledText {
-                                text: "SUPER + P o Flechas para elegir · Enter para aplicar"
+                                text: "SUPER + P or Arrows to choose · Enter to apply"
                                 font.pixelSize: Theme.fontSizeSmall - 1
                                 color: Theme.surfaceVariantText
                                 elide: Text.ElideRight
@@ -458,7 +458,7 @@ PluginComponent {
                                             }
 
                                             StyledText {
-                                                text: "Activo"
+                                                text: "Active"
                                                 font.pixelSize: Theme.fontSizeSmall - 2
                                                 font.weight: Font.DemiBold
                                                 color: cardDelegate.isSelected ? Theme.surfaceContainerHighest : Theme.primary
